@@ -19,9 +19,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   diffSeconds: number;
   currentState: string = '';
   pauser = new BehaviorSubject(false);
-  // pausee = true;
-
-  // All the magic is here
   pausable = this.pauser.pipe(switchMap(paused => paused ? never() : this.clock));
 
 
@@ -38,7 +35,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       filter(val => val === 1)
     ).subscribe(e =>  {
       console.log('This was a double click!');
-      // if (this.checkEmpty()) return;
       this.stop();
     });
   }
@@ -69,7 +65,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         })
       );
 
-    if ( this.subscription){
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
 
