@@ -1,0 +1,27 @@
+<div class="dashboard">
+
+  <div class="timer">
+
+    <div class="timer__title">Timer</div>
+    <div class="timer__time">
+      <div class="time">
+        <div class="time__h"><input type="number" [(ngModel)]="hours" min="0" max="23"></div>
+        <div class="time__m"><input type="number" [(ngModel)]="minutes" min="0" max="59"></div>
+        <div class="time__s"><input type="number" [(ngModel)]="seconds" min="0" max="59"></div>
+      </div>
+
+    </div>
+
+    <div class="timer__btns">
+      <button (click)="start()" *ngIf="!currentState" class="btn btn-blue">Start</button>
+      <button (click)="stop()" *ngIf="currentState === 'start'" class="btn btn-blue" >Stop</button>
+      <button (click)="continue()" *ngIf="currentState === 'stop'" class="btn btn-blue">Continue</button>
+      <button [ngClass]="{'hide': !currentState || currentState === 'stop'}" class="wait btn btn-blue">Wait</button>
+      <button (click)="reset()" class="btn btn-blue" *ngIf="currentState">Reset</button>
+    </div>
+
+  </div>
+
+</div>
+
+
